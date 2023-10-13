@@ -1,0 +1,21 @@
+pre {
+  position: relative !important;
+  width: fit-content ;
+padding-top: 25px !important;
+  .copy-code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    border-radius: 2px;
+  }
+
+  .copy-code:hover {
+    background-color: var(--secondary-400);
+    color: black;
+  }
+}
