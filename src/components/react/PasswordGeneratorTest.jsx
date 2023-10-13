@@ -15,7 +15,7 @@ class PasswordGeneratorTest extends Component {
   generatePassword(length, includeSpecialChars, includeNumbers) {
     let charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     if (includeSpecialChars) {
-      charset += '!@#$%^&*()-_+.:;[]'
+      charset += '!@#$%^&*'
     }
     if (includeNumbers) {
       charset += '0123456789'
@@ -66,7 +66,7 @@ class PasswordGeneratorTest extends Component {
   }
 
   highlightNumbers = (text) => {
-    return text.replace(/\d+/g, (match) => `<span class=" font-semi-bold text-red-400">${match}</span>`)
+    return text.replace(/\d+/g, (match) => `<span class="  font-bold text-red-400">${match}</span>`)
   }
   render() {
     return (
@@ -77,7 +77,7 @@ class PasswordGeneratorTest extends Component {
             dangerouslySetInnerHTML={{ __html: this.highlightNumbers(this.state.password) }}
           />
 
-          <div className="mb-3 flex">
+          <div className="mb-3 flex justify-between">
             <div className="flex items-center space-x-2">
               {this.state.password.length >= 9 ? (
                 <>
@@ -99,49 +99,63 @@ class PasswordGeneratorTest extends Component {
                 </>
               )}
             </div>
+
+            <div className="flex space-x-3">
+              <button
+                title="generate"
+                className=" rounded-full  border-4 border-slate-300 bg-slate-100  p-0 px-2  py-2 outline-none"
+              >
+                <img className="w-6" src="https://cdn-icons-png.flaticon.com/128/3329/3329465.png" alt="" />
+              </button>
+              <button
+                onClick={this.copyToClipboard}
+                title="Copy"
+                className=" rounded-full  border-4 border-slate-300 bg-slate-100  p-0 px-2  py-2 outline-none"
+              >
+                <img className="w-6" src="https://cdn-icons-png.flaticon.com/128/1620/1620767.png" alt="" />
+              </button>
+              <button
+                title="Save"
+                className=" rounded-full  border-4 border-slate-300 bg-slate-100  p-0 px-2  py-2 outline-none"
+              >
+                <img className="w-6" src="https://cdn-icons-png.flaticon.com/128/5662/5662990.png" alt="" />
+              </button>
+            </div>
           </div>
         </div>
 
-        <div>
-          <label>Password Length: </label>
-          <input
-            type="range"
-            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700"
-            min="8"
-            max="50"
-            step="1"
-            value={this.state.passwordLength}
-            onChange={(e) => this.handlePasswordLengthChange(e.target.value)}
-          />
-          <span>{this.state.passwordLength}</span>
-        </div>
-        <div>
-          <label>
+        <div className="mt-10 flex w-full flex-col items-center justify-center space-y-10">
+          <div className="flex w-1/2 justify-between  items-center  border-b-2 pb-3">
+            <label>Password Length: </label>
+            <input
+              type="range"
+              className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700 "
+              min="8"
+              max="50"
+              step="1"
+              value={this.state.passwordLength}
+              onChange={(e) => this.handlePasswordLengthChange(e.target.value)}
+            />
+            <span>{this.state.passwordLength}</span>
+          </div>
+          <div className="flex w-1/2 justify-between   border-b-2 pb-3">
+            <label>Include Special Characters (!@#$%^&*)</label>
             <input
               className=""
               type="checkbox"
               checked={this.state.includeSpecialChars}
               onChange={this.handleSpecialCharsChange}
             />{' '}
-            Include Special Characters
-          </label>
-        </div>
-        <div>
-          <label>
+          </div>
+          <div className="flex w-1/2 justify-between   border-b-2 pb-3">
+            <label>Include Numbers (0-9)</label>
             <input
-              className=""
+              className=" "
               type="checkbox"
               checked={this.state.includeNumbers}
               onChange={this.handleNumbersChange}
             />{' '}
-            Include Numbers
-          </label>
-        </div>
-
-        <div className="">
-          <button className=" mt-4 hover:shadow-md hover:shadow-slate-600" onClick={this.copyToClipboard}>
-            Copy to Clipboard
-          </button>
+          </div>
         </div>
       </div>
     )
