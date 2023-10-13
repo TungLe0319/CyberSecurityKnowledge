@@ -12,3 +12,11 @@
 @use 'base/color';
 @use 'base/outline';
 @use 'base/space-content';
+
+.wrap-words {
+  width: 50vw;
+
+  padding: 10px;
+  word-wrap: break-word;
+  font-size: 20px;
+}
