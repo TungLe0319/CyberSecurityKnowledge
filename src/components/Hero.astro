@@ -6,7 +6,7 @@ const { src = '/astronaut-hero-img.webp' } = Astro.props
 
 <section class="hero my-24">
   <div class="container">
-    <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
+    <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2 lg:justify-center lg:flex ">
       <div class="flex flex-col items-center gap-8 md:items-start">
         <h1 class="text-center text-6xl md:text-left lg:text-8xl">
           <slot><span class="text-gradient">Cyber <br>Security</span> Showcasing my knowledge</slot>
@@ -15,7 +15,7 @@ const { src = '/astronaut-hero-img.webp' } = Astro.props
   
         </div>
       </div>
-      <img class="hidden lg:block" src="https://img.freepik.com/free-photo/3d-internet-secuirty-badge_1048-18106.jpg?w=740&t=st=1697233361~exp=1697233961~hmac=3116d8991883a923ae0aa0fc96b8fab9c087b4c47d5f5ef94e46d90cc33074b6" alt="" decoding="async" />
+      <img class="hidden lg:block" src="https://cdn-icons-png.flaticon.com/128/8046/8046426.png" alt="" decoding="async" />
     </div>
   </div>
 </section>
