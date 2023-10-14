@@ -1,48 +1,16 @@
 ---
 import DefaultLayout from '../../layouts/DefaultLayout.astro'
-
-import { Buffer } from 'buffer';
-const CLIENT_ID = 'aad38f2633ec4bac9c9ac8027dcbed92';
-const CLIENT_SECRET = 'aad38f2633ec4bac9c9ac8027dcbed92';
-
-let accessToken = ''; // Initialize an empty access token
-
-const makeApiRequest = async () => {
-  try {
-    const authParameters = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + (Buffer.from(CLIENT_ID + ':' + CLIENT_SECRET).toString('base64'))
-      },
-      body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
-    };
-
-    const response = await fetch('https://accounts.spotify.com/api/token', authParameters);
+import {getAccessToken} from '../../lib/services/spotify/auth/accessToken/getAccessToken'
+import { Buffer } from 'buffer'
 
 
-  
-    
-    const data = await response.json();
-    console.log(data);
-    
-    if (response.ok) {
-      accessToken = data.access_token; // Set the access token
-      console.log(data);
-    } else {
-      console.error('Access token request failed:', response.status, response.statusText);
-    }
-  } catch (error) {
-    console.error('Error making access token request:', error);
-  }
-};
+let accessToken = getAccessToken()
 
-makeApiRequest(); // Make the API request when the component loads
+
 ---
 
 <DefaultLayout title="Home">
-  <section class="my-64">
-{accessToken}
- 
+  <section class="my-64 bg-slate-700 p-2">
+  token:  {accessToken}
   </section>
 </DefaultLayout>
