@@ -6,7 +6,8 @@ import DefaultLayout from '../../layouts/DefaultLayout.astro'
   <section class="my-64 bg-slate-700 p-2">
     <user-spotify>
       user-spotify:
-      <img id="user-image" />
+      <img id="user-image" class="rounded shadow-md" />
+      
     </user-spotify>
   </section>
 </DefaultLayout>
@@ -65,8 +66,8 @@ import DefaultLayout from '../../layouts/DefaultLayout.astro'
 
         const data = await response.json()
         console.log(data)
-        let imagesrc = data?.images[0].url
-        console.log(imagesrc)
+        // let imagesrc = data?.images[0].url
+
         userImage?.setAttribute('src', data.images[0].url)
       }
 
