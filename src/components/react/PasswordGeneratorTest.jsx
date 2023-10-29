@@ -125,7 +125,7 @@ class PasswordGeneratorTest extends Component {
         </div>
 
         <div className="mt-10 flex w-full flex-col items-center justify-center space-y-10">
-          <div className="flex w-1/2 justify-between  items-center  border-b-2 pb-3">
+          <div className="flex w-1/2 items-center  justify-between  border-b-2 pb-3">
             <label>Password Length: </label>
             <input
               type="range"
