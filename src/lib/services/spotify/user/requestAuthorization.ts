@@ -55,6 +55,7 @@ const CLIENT_ID = import.meta.env.SPOTIFY_CLIENT_ID
 export async function requestUserAuth() {
   let state = generateRandomString(16)
   let scope = 'user-read-private user-read-email'
+    localStorage.setItem('code_verifier', codeVerifier)
 
   let args = new URLSearchParams({
     response_type: 'code',
